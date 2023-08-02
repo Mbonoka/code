@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Student Login</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        
+    </head>
+    <body>
+        <div class="wrapper">
+            <form id="form" action="studLogin.php" method="post">
+                <h1>MyLATS</h1>
+                <div class="input-box">
+                    <input type="text" name="username" required>
+                    <label>class code</label>
+                    <input type="password" name="password" required>
+                    <label>Password</label>                    
+                </div>
+                <div class="remember-forgot">
+                    <a href="#">Forgot password?</a> <!--a message that says "see administrator for password change"-->
+                </div><br>
+                <button type="submit" class="btn" name="submit" onclick="validate()">Login</button>
+            </form>
+        </div>
+        <script src="studLogin.js"></script>
+    </body>
+    
+</html>

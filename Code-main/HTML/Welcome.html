@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MyLats</title>
+        <link rel="stylesheet" href="Welcome.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+         <header>
+            <h2 class="logo">MyLATS</h2>
+            <nav class="navigation">
+                <!--<a href="#">Register</a>-->                              
+                    <button id="stdButton" class="navigation login-popup">Student</button>                
+                    <button id= "trButton" class="navigation login-popup">Teacher</button>    
+                    <button id="adminButton" class="navigation login-popup">ADMIN</button>                
+            </nav>
+         </header>
+
+         <div class="wrapper2">            
+                <span id="iconClose" class="icon-close">
+                   <button><i class='bx bx-x'></i></button> 
+                </span>           
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form action="#">                    
+                    <div class="input-box">
+                        <span class="icon">
+                            <i class='bx bxs-user'></i>
+                        </span>
+                        <input type="number" required>
+                        <label>TSC number</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <i class='bx bxs-lock-alt'></i>
+                        </span>
+                        <input type="password" required>
+                        <label>Password</label>                    
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="login-register">
+                        <p>Don't have an account?<a href="#"
+                            class="register-link">Register</a></p>
+                    </div>                               
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon">
+                            <i class='bx bxs-user-circle'></i>
+                        </span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <i class='bx bxs-lock-alt'></i>
+                        </span>
+                        <input type="number" required>
+                        <label>TSC number</label>                    
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <i class='bx bxs-lock-alt'></i>
+                        </span>
+                        <input type="password" required>
+                        <label>Password</label>                    
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">I agree to the terms & conditions</label>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="login-register">
+                        <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+         </div>
+         
+         <script src="welcome.js"></script>
+    </body>
+</html>
+
+<!--<a href="LOGIN.html"><button id="myButton">ENTER APPLICATION</button></a>

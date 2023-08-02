@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:#63A088;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .add-class {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .inputBox {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      
+      .inputBox .icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 15px;
+        color: #999;
+      }
+      
+      .inputBox input {
+        width: 80%;
+        padding: 10px 40px 10px 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      .inputBox label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 75px;
+        font-size: 14px;
+        color: #666;
+      }
+      
+      .submit {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+      
+      .submit:hover {
+        background-color: #0056b3;
+      }
+      
+      /* Styling for icons (Boxicons) */
+      .bx {
+        display: inline-flex;
+        align-items: center;
+        font-size: 20px;
+        margin-right: 5px;
+      }
+      
+      .bxs-user:before {
+        content: "\f007";
+      }
+      
+      .bxs-lock-alt:before {
+        content: "\f342";
+      }
+      </style>
+</head>
+<body>
+    <form class="add-class" action="addClass.php" method="post">
+        <h2> Add a new class </h2><br>
+        <div class="inputBox">
+            <span class="icon">
+                <i class='bx bxs-user'></i>
+            </span>
+            <input id="class-ID" type="text" name="class-code"placeholder="Class Code..." >
+            <br>
+            <span class="icon">
+                <i class='bx bxs-user'></i>
+            </span><br><br>
+            <input id="no-of-students" type="number" name="no_of_students" placeholder="Class Population...">
+            <br><br>
+            <input id="password" type="password" name="password" placeholder="Input Password.." required>
+          
+            <span class="icon">
+                <i class='bx bxs-lock-alt'></i>
+            </span><br><br>
+            
+        </div><br>
+        <tr>
+            <td colspan="2"><input type="submit" class="submit" value="Register" /></td>
+          </tr>
+    </form>
+</body>
+</html>
+
+

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyLATS</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #5ce57e;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+        }
+        
+        .login-popup {
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid white;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: white;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: .5s;
+        }
+        
+        .login-popup:hover {
+            background: white;
+            color: #63A088;
+            transition: .5s;
+        }
+        
+        .wrapper {
+            position: relative;
+            width: 400px;
+            height: auto; /* auto for dynamic height based on content */
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            flex-direction: column; /* Arrange buttons horizontally */
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Adjust padding as needed */
+            margin: auto; /* Center the wrapper horizontally */
+            margin-top: 20vh; /* Adjust top margin as needed */
+        }
+        
+        .wrapper .stdBtn button,
+        .wrapper .trBtn button,
+        .wrapper .adminBtn button {
+            width: 130px; /* Keep the width the same */
+            height: 50px; /* Keep the height the same */
+            padding: 10px 20px; /* Increase the padding as desired */
+            font-size: 1.2em; /* Increase the font size as desired */
+            margin-bottom: 20px;
+        }
+        
+        .wrapper .prevButton {
+            position: absolute;
+            top: 10px;
+            left: 10px; /* Adjusted left positioning */
+            width: 85px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 20%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .wrapper .nextButton {
+            position: absolute;
+            bottom: 10px;
+            right: 10px; /* Adjusted right positioning */
+            width: 85px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 20%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popups {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .icon-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        
+        .form-box {
+            display: none;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-box h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+        .form-box .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .form-box .input-box .icon {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .form-box .input-box .icon i {
+            font-size: 18px;
+        }
+        
+        .form-box .input-box input {
+            width: 100%;
+            padding: 10px 40px 10px 30px;
+            border: none;
+            outline: none;
+            background: #f0f0f0;
+            color: #333;
+            border-radius: 5px;
+        }
+        
+        .form-box .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            color: #777;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+        
+        .form-box .input-box input:focus ~ label,
+        .form-box .input-box input:valid ~ label {
+            top: -10px;
+            left: 20px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .form-box .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .form-box .remember-forgot label {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .form-box .remember-forgot a {
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .form-box .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            outline: none;
+            background: #00bfa6;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .form-box .btn:hover {
+            background: #00a693;
+        }
+        
+        .form-box .login-register {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .form-box .login-register p {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .form-box .login-register a {
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome Back!</h1>
+    </header>
+    <div class="wrapper1">
+
+        <div class="btns">
+            <div class="classBtn">
+               <a href="studLogin.html"><button id="classButton" class="login-popup">Class</button>
+            </a>                 
+            </div><br>
+            <div class="trBtn">
+                <a href="trLogin.html">
+                    <button id= "stdButton" class="login-popup">Teacher</button>
+                </a>
+            </div><br>
+            <div class="adminBtn">
+                <a href="adminLogin.html">
+                    <button id="adminButton" class="login-popup">ADMIN</button>
+                </a>
+            </div>  
+    <script src="universalLogin.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <style>body {
+    font-family: Arial, sans-serif;
+    background-color:#63A088;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:#63A088;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .registration-form table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .registration-form td {
+    padding: 10px;
+  }
+  
+  .registration-form label {
+    font-weight: bold;
+  }
+  
+  .registration-form input[type="text"],
+  .registration-form input[type="tsc_number"],
+  .registration-form input[type="PhoneNumber"],
+  .registration-form input[type="password"],
+  .registration-form input[type="radio"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #63A088;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .registration-form input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  .registration-form .submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .registration-form .submit:hover {
+    background-color: #0056b3;
+  }
+  
+  .login-register {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Teacher Registration</h1>
+    <form class="registration-form" action="registration.php" method="POST">
+      <table>
+        <tr>
+          <td><label for="tsc_number">TSC Number:</label></td>
+          <td><input type="number" name="tsc_number" id="tscnumber" placeholder="your TSC Number" value="" required></td>
+        </tr>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" name="name" id="name" placeholder="your name" value="" required></td>
+        </tr>
+        <tr>
+          <td><label for="phone_number">Phone Number:</label></td>
+          <td><input type="number" name="phone_number" id="phonenumber" placeholder="Your phone number" value="" required></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="text" name="email" id="email" placeholder="your email" value="" required></td>
+        </tr>
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td><input type="password" name="password" id="password" value="" required></td>
+        </tr>
+        <tr>
+          <td><label for="confirm_password">Confirm Password:</label></td>
+          <td><input type="password" name="confirm_password" id="confirmpassword" value=""></td>
+        </tr>
+       
+        <tr>
+          <td><label for="user_type">User type:</label></td>
+          <td>
+            Teacher: <input type="radio" name="user_type" value="1"><br>
+            Admin: <input type="radio" name="user_type" value="2"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" class="submit" value="Register" /></td>
+        </tr>
+      </table>
+      <div class="login-register">
+        <p>Already have an account?<a href="trLogin.html" class="login-link">Login</a></p>
+    </div>
+    </form>
+  </div>
+  <script src="registration.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Recording Interface</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+		body {
+		  font-family: Arial, sans-serif;
+		  background-color: #63A088;
+		  margin: 0;
+		  padding: 0;
+		}
+
+		.wrapper{
+		  max-width: 500px;
+		  margin-left: 100px;
+		  padding: 20px;
+		  background-color: #fff;
+		  border-radius: 5px;
+		  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h2 {
+		  text-align: center;
+		}
+
+		form {
+		  display: flex;
+		  flex-direction: column;
+		}
+
+		label, select, input[type="radio"], textarea, button {
+		  margin-bottom: 10px;
+		  padding: 5px;
+		}
+
+		select, input[type="Radio"], textarea {
+		  width: 100%;
+		}
+
+		button {
+		  background-color: #007bff;
+		  color: #fff;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		}
+
+		button:hover {
+		  background-color: #0056b3;
+		}
+
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>Attendance Recording Interface</h2>
+    <form name="myform" method="post" action="lesson.php" onsubmit="return validateForm()">
+        <label for="class">Choose a class:</label>
+        <select id="classList" name="classList" onchange="showTopics()">
+            <option value="">Choose a class</option>
+                <option value="1west">1 West</option>
+                <option value="2west">2 West</option>
+                <option value="3west">3 West</option>
+                <option value="4west">4 West</option>
+                <option value="1east">1 East</option>
+                <option value="2east">2 East</option>
+                <option value="3east">3 East</option>
+                <option value="4east">4 East</option>
+                <option value="1north">1 North</option>
+                <option value="2north">2 North</option>
+                <option value="3north">3 North</option>
+                <option value="4north">4 North</option>
+                <option value="1south">1 South</option>
+                <option value="2south">2 South</option>
+                <option value="3south">3 South</option>
+                <option value="4south">4 South</option>
+    	</select>
+      <label for="subject">Choose a subject:</label>
+        <select id="subjectList" name="subjectList" onchange="showTopics()">
+    <option value="">Choose a subject</option>
+        <option value="English">English Language and Literature</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Biology">Biology</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Physics">Physics</option>
+        <option value="History">History</option>
+        <option value="Geography">Geography</option>
+        <option value="Civics">Civics</option>
+        <option value="Economics">Economics</option>
+        <option value="Spanish">Spanish</option>
+        <option value="French">French</option>
+        <option value="German">German</option>
+        <option value="PhysicalEd">Physical Education</option>
+        <option value="VisualArts">Visual Arts</option>
+        <option value="Music">Music</option>
+        <option value="Drama">Drama</option>
+		<option value="ComputerScience">Computer Science</option>
+        <option value="HealthEd">Health Education</option>
+        <option value="CivicsOrGov">Civics or Government Studies</option>
+        <option value="HomeEconomics">Home Economics or Family Studies</option>
+        <option value="CareerTechEd">Career and Technical Education</option>
+    		</select>
+
+    <div name="topicList" id="topicList">
+        <script>
+        function showTopics() {
+            const subjectDropdown = document.getElementById("subjectList");
+            const selectedSubject = subjectDropdown.value;
+            const topicListDiv = document.getElementById("topicList");
+
+            // Clear the previous topics
+            topicListDiv.innerHTML = "";
+
+            // Define topics for each subject
+            const topics = {
+                 "English": ["Literary Analysis", "Grammar and Composition", "Creative Writing", "Poetry"],
+                "Mathematics": ["Algebra", "Geometry", "Trigonometry", "Calculus"],
+                "Biology": ["Cell Biology", "Genetics", "Ecology", "Human Anatomy"],
+                "Chemistry": ["Chemical Reactions", "Acids and Bases", "Organic Chemistry", "Chemical Equilibrium"],
+                "Physics": ["Mechanics", "Electricity and Magnetism", "Waves and Optics", "Thermodynamics"],
+                "History": ["World History", "African History", "European History", "US History"],
+                "Geography": ["Physical Geography", "Human Geography", "Climatology", "Economic Geography"],
+                "Civics": ["Citizenship Education", "Government and Politics", "Constitutional Law"],
+                "Economics": ["Microeconomics", "Macroeconomics", "International Trade", "Economic Development"],
+                "Spanish": ["Grammar and Vocabulary", "Reading and Writing", "Conversation", "Hispanic Culture"],
+                "French": ["Grammar and Vocabulary", "Reading and Writing", "Conversation", "French Culture"],
+                "German": ["Grammar and Vocabulary", "Reading and Writing", "Conversation", "German Culture"],
+                "PhysicalEd": ["Sports and Games", "Fitness and Conditioning", "Team Sports"],
+                "VisualArts": ["Drawing and Sketching", "Painting", "Sculpture", "Art History"],
+                "Music": ["Music Theory", "Instrumental Music", "Vocal Music", "Music History"],
+                "Drama": ["Acting Techniques", "Playwriting", "Theatrical Production", "Theatre History"],
+                "ComputerScience": ["Programming", "Web Development", "Data Science", "Cybersecurity"],
+                "HealthEd": ["Nutrition", "Mental Health", "Physical Fitness", "Sexual Education"],
+                "CivicsOrGov": ["Government Structure", "Political Systems", "Civic Engagement"],
+                "HomeEconomics": ["Cooking and Nutrition", "Family Budgeting", "Sewing and Textiles"],
+                "CareerTechEd": ["Automotive Technology", "Business Management", "Agriculture"]
+				};
+
+            // Display topics for the selected subject
+            if (selectedSubject && topics[selectedSubject]) {
+                const topicsArray = topics[selectedSubject];
+                const topicDropdown = document.createElement("select");
+
+                // Create options for each topic
+                for (const topic of topicsArray) {
+                    const option = document.createElement("option");
+                    option.value = topic;
+                    option.textContent = topic;
+                    topicDropdown.appendChild(option);
+                }
+
+                topicListDiv.appendChild(topicDropdown);
+            }
+        }
+    </script>
+    </div>  
+    <label for="additionalInfo">Additional Information:</label>
+      <textarea id="additionalInfo" name="additionalInfo" placeholder="Enter additional info here..."></textarea>
+	<label>Assignment given:</label>
+      <label for="Yes">Yes<input type="radio" id="Yes" name="assignment" value="Yes"></label>
+      <label for="No">No<input type="radio" id="No" name="assignment" value="No"></label><br><br>
+      
+
+      <button type="submit" class="btn" name="submit" onclick="validate()">Submit Attendance</button>
+    </form>
+  </div>
+  <script>
+    function showTopics() {
+      const subjectDropdown = document.getElementById("subjectList");
+      const selectedSubject = subjectDropdown.value;
+      const topicListDiv = document.getElementById("topicList");
+
+      // Clear the previous topics
+      topicListDiv.innerHTML = "";
+
+      // Define topics for each subject
+      const topics = {
+        "English": ["Literary Analysis", "Grammar and Composition", "Creative Writing", "Poetry"],
+        // Add topics for other subjects here
+      };
+
+      // Display topics for the selected subject
+      if (selectedSubject && topics[selectedSubject]) {
+        const topicsArray = topics[selectedSubject];
+        const topicDropdown = document.createElement("select");
+        topicDropdown.name = "topicList"; // Set the name attribute for the topics dropdown
+
+        // Create options for each topic
+        for (const topic of topicsArray) {
+          const option = document.createElement("option");
+          option.value = topic;
+          option.textContent = topic;
+          topicDropdown.appendChild(option);
+        }
+
+        topicListDiv.appendChild(topicDropdown);
+      }
+    }
+
+    function validateForm() {
+      const subjectDropdown = document.getElementById("subjectList");
+      const topicDropdown = document.getElementById("topicList").querySelector("select");
+      const assignmentRadioYes = document.getElementById("Yes");
+      const assignmentRadioNo = document.getElementById("No");
+      const additionalInfoTextarea = document.getElementById("additionalInfo");
+
+      // Check if all required fields are filled
+      if (
+        subjectDropdown.value === "" ||
+        (topicDropdown && topicDropdown.value === "") ||
+        (!assignmentRadioYes.checked && !assignmentRadioNo.checked) ||
+        additionalInfoTextarea.value.trim() === ""
+      ) {
+        alert("Please fill all sections before submitting.");
+        return false;
+      } else {
+        // If all fields are filled, show a success message
+        alert("Attendance successfully recorded!");
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>

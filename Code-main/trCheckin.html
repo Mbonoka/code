@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Check-in and Check-out</title>
+    <style>
+        body {
+     font-family: Arial, sans-serif;
+     background-color: #63A088;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     margin: 0;
+     }
+ 
+     form {
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     width: 300px;
+     }
+ 
+     label {
+     display: block;
+     margin-bottom: 10px;
+     font-weight: bold;
+     }
+ 
+     
+     .checkIn input,
+     .checkOut input {
+     margin-right: 10px;
+     margin-bottom: 0;
+     }
+     
+     .btn {
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     border-radius: 5px;
+     padding: px 20px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background-color 0.3s ease;
+     }
+ 
+     btn:hover {
+     background-color: #0056b3;
+     }
+ 
+     </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Lesson Check-in and Check-out</h1>
+        <form id="lessonForm" method="post" action="record_time.php">
+            <!-- Input field for lessonID -->
+            <label for="lessonID">Lesson ID:</label>
+            <input type="number" id="lessonID" name="lessonID" required>
+            <br>
+            <button type="submit" class="btn" name="checkInBtn">Check In</button>
+            <button type="submit" class="btn" name="checkOutBtn">Check Out</button>
+        </form>
+    </div>
+    <script src="trCheckin.js"></script>
+</body>
+</html>
+
+
+
+
